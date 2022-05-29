@@ -8,6 +8,8 @@ import { CreateCaronaComponent } from './carona/create-carona/create-carona.comp
 import { FindCaronaComponent } from './carona/find-carona/find-carona.component';
 import { FooterComponent } from './footer/footer.component';
 import { PesquisarCaronaComponent } from './carona/pesquisar-carona/pesquisar-carona.component';
+import { LoginComponent } from './login/login.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { PesquisarCaronaComponent } from './carona/pesquisar-carona/pesquisar-ca
     FindCaronaComponent,
     FooterComponent,
     PesquisarCaronaComponent,
+    LoginComponent,
+    CadastroComponent,
   ],
   imports: [
     CommonModule,
