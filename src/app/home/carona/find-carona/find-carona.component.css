@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&display=swap');
+.bg-carona {
+    background-image: url("/assets/bg-carona.jpg");
+    background-repeat: repeat-x;
+    background-position: center; 
+}
+#find-carona-content h1{
+    color: white;
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+#find-carona-content form{
+    margin-top: 70px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+.no-round-right {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.no-round-left {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.info {
+    max-width: 32%;
+}
+.info i {
+    font-size: 40px;
+}

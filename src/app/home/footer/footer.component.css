@@ -1,0 +1,23 @@
+.social-media a {
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 35px;
+    font-size: 22px;
+    color: white;
+}
+.a-facebook {
+    background: #07295d;
+}
+.a-twitter {
+    background: #0d6efd;
+}
+.a-youtube {
+    background: red;
+}
+.a-instagram {
+    background: #d62976;
+}
