@@ -10,6 +10,9 @@ import { FooterComponent } from './footer/footer.component';
 import { PesquisarCaronaComponent } from './carona/pesquisar-carona/pesquisar-carona.component';
 import { LoginComponent } from './login/login.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { FormsModule } from '@angular/forms';
+import { ViewCaronaComponent } from './carona/view-carona/view-carona.component';
 
 
 @NgModule({
@@ -22,10 +25,13 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     PesquisarCaronaComponent,
     LoginComponent,
     CadastroComponent,
+    ViewCaronaComponent,
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    TypeaheadModule,
+    FormsModule
   ],
   bootstrap: [HomeComponent]
 })

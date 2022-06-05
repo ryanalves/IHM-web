@@ -1,0 +1,50 @@
+h1, h2, h3, h4, h5 {
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+.content {
+    flex-direction: column;
+    align-items: center;
+}
+
+.dia {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info {
+    width: 100%;
+    display: flex;
+    /* background: red; */
+    flex-direction: column;
+}
+.local {
+    display: flex;
+    width: 100%;
+}
+.localidade {
+    flex-grow: 1;
+}
+.hora {
+    margin-right: 20px;
+    font-weight: 800;
+}
+
+.grey {
+    color: grey;
+}
+
+.user {
+    display: flex;
+    margin: 10px;
+}
+.user .icon {
+    border: 1px solid;
+    border-radius: 50%;
+}
+.user .icon img {
+    border-radius: 50%;
+}
+.user .info {
+ font-size: 12px;
+}

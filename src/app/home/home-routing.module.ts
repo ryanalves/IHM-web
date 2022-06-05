@@ -4,6 +4,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { CreateCaronaComponent } from './carona/create-carona/create-carona.component';
 import { FindCaronaComponent } from './carona/find-carona/find-carona.component';
 import { PesquisarCaronaComponent } from './carona/pesquisar-carona/pesquisar-carona.component';
+import { ViewCaronaComponent } from './carona/view-carona/view-carona.component';
 import { HomeComponent } from './home.component';
 import { LoginComponent } from './login/login.component';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: "caronas", component: FindCaronaComponent },
       { path: "pesquisar-carona", component: PesquisarCaronaComponent },
       { path: "oferecer-carona", component: CreateCaronaComponent },
+      { path: "view-carona", component: ViewCaronaComponent },
     ]
   },
   { path: "login", component: LoginComponent },
