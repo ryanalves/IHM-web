@@ -10,3 +10,7 @@ h11 {
 .panel-heading{
    font-size:150%;
 }
+.required:before {
+  content:" *";
+  color: red;
+}
