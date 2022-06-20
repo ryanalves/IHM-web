@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroComponent implements OnInit {
 
+  tipoUsuario: any = "";
+
   constructor() { }
 
   ngOnInit(): void {

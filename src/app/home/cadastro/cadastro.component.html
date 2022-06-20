@@ -7,13 +7,14 @@
 	</a>
 
 	<h4 class="text-center">Cadastre-se agora e VãoBora!</h4>
-  <div class="cadastro-motorista">
-    <select id="cadastro" class="form-select" aria-label="Selecione Categoria de Cadastro">
-      <option selected>Em qual categoria deseja se cadastrar?</option>
-      <option value="1">Motorista VãoBora (Oferecer e Encontrar Caronas).</option>
-      <option value="2">Cliente VãoBora (Apenas Encontrar Caronas).</option>
-    </select>
-  </div>
+	<div class="cadastro-motorista">
+		<select id="cadastro" class="form-select" [(ngModel)]="tipoUsuario" aria-label="Selecione Categoria de Cadastro"
+			[ngModelOptions]="{standalone: true}">
+			<option value="" selected>Em qual categoria deseja se cadastrar?</option>
+			<option value="2">Cliente VãoBora (Apenas Encontrar Caronas).</option>
+			<option value="1">Motorista VãoBora (Oferecer e Encontrar Caronas).</option>
+		</select>
+	</div>
 	<div class="col-md-6 required">
 		<label for="inputEmail4" class="form-label">Email</label>
 		<input type="email" class="form-control" id="inputEmail4" required>
@@ -38,20 +39,6 @@
 		<input type="text" class="form-control" id="inputAddress2" placeholder="Exemplo: Olaria">
 	</div>
 
-  <div class="col-12 required">
-		<label for="cnh" class="form-label">Número de sua CNH (Carteira Nacional de Habilitação)</label>
-		<input type="number" class="form-control" id="cnh" placeholder="Exemplo: 09267028253">
-	</div>
-
-  <div class="col-12 required">
-		<label for="cnh" class="form-label">Modelo do Veículo</label>
-		<input type="text" class="form-control" id="modelo" placeholder="Volkswagem Fox 2012">
-	</div>
-
-  <div class="col-12 required">
-		<label for="cnh" class="form-label">Placa do Veículo</label>
-		<input type="text" class="form-control" id="placa" placeholder="Volkswagem Fox">
-	</div>
 
 
 	<div class="col-md-6 required">
@@ -69,6 +56,22 @@
 		<label for="inputZip" class="form-label">CEP</label>
 		<input type="text" class="form-control" id="inputZip">
 	</div>
+	
+	<div class="col-12 required" *ngIf="tipoUsuario == 1">
+		<label for="cnh" class="form-label">Número de sua CNH (Carteira Nacional de Habilitação)</label>
+		<input type="number" class="form-control" id="cnh" placeholder="Exemplo: 09267028253">
+	</div>
+
+	<div class="col-12 required" *ngIf="tipoUsuario == 1">
+		<label for="cnh" class="form-label">Modelo do Veículo</label>
+		<input type="text" class="form-control" id="modelo" placeholder="Volkswagem Fox 2012">
+	</div>
+
+	<div class="col-12 required" *ngIf="tipoUsuario == 1">
+		<label for="cnh" class="form-label">Placa do Veículo</label>
+		<input type="text" class="form-control" id="placa" placeholder="Volkswagem Fox">
+	</div>
+
 	<div class="col-md-12 d-flex justify-content-between">
 		<div>
 
