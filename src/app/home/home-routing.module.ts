@@ -7,24 +7,35 @@ import { PesquisarCaronaComponent } from './carona/pesquisar-carona/pesquisar-ca
 import { ViewCaronaComponent } from './carona/view-carona/view-carona.component';
 import { HomeComponent } from './home.component';
 import { LoginComponent } from './login/login.component';
+import { DetalhesComponent } from './perfil/detalhes/detalhes.component';
 
 const routes: Routes = [
-  {
-    path: "",
-    component: HomeComponent,
-    children: [
-      { path: "caronas", component: FindCaronaComponent },
-      { path: "pesquisar-carona", component: PesquisarCaronaComponent },
-      { path: "oferecer-carona", component: CreateCaronaComponent },
-      { path: "view-carona", component: ViewCaronaComponent },
-    ]
-  },
-  { path: "login", component: LoginComponent },
-  { path: "cadastro", component: CadastroComponent },
+    {
+        path: '',
+        component: HomeComponent,
+        children: [
+            { path: 'caronas', component: FindCaronaComponent },
+            { path: 'pesquisar-carona', component: PesquisarCaronaComponent },
+            { path: 'oferecer-carona', component: CreateCaronaComponent },
+            // { path: 'view-carona', component: ViewCaronaComponent },
+            { path: 'view-carona/:id', component: ViewCaronaComponent },
+        ],
+    },
+    {
+        path: 'perfil',
+        component: HomeComponent,
+        children: [
+            { path: '', redirectTo: '/perfil/caronas', pathMatch: 'full' },
+            { path: 'caronas', component: DetalhesComponent },
+            { path: 'detalhes', component: DetalhesComponent },
+        ],
+    },
+    { path: 'login', component: LoginComponent },
+    { path: 'cadastro', component: CadastroComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
-export class HomeRoutingModule { }
+export class HomeRoutingModule {}

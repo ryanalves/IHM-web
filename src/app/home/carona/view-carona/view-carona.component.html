@@ -5,51 +5,61 @@
     <div class="d-flex justify-content-center w-50">
         <div class="info">
             <div class="dia">
-                <h3>Quarta, 8 de junho</h3>
-                <h4>R$ 7,90</h4>
+                <h3>{{ formatarData(carona?.saidaHorario) }}</h3>
+                <h4>{{ carona?.valor | currency }}</h4>
             </div>
             <span class="border-bottom"></span>
             <div class="local p-2">
-                <div class="hora">08:00</div>
+                <div class="hora">{{ formatarHorario(carona?.saidaHorario) }}</div>
                 <div class="localidade">
-                    Centro, Timóteo
+                    {{ carona?.saida }}
                 </div>
-                <div> <i class="bi bi-chevron-right"></i> </div>
+                <div><i class="bi bi-chevron-right"></i></div>
             </div>
             <div class="local p-2">
-                <div class="hora">08:30</div>
+                <div class="hora">{{ formatarHorario(carona?.chegadaHorario) }}</div>
                 <div class="localidade">
-                    Unileste, Coronel Fabriciano
+                    {{ carona?.chegada }}
                 </div>
-                <div> <i class="bi bi-chevron-right"></i> </div>
+                <div><i class="bi bi-chevron-right"></i></div>
             </div>
             <span class="border-bottom"></span>
             <div class="row">
                 <div class="col-sm-3 p-3">
+                    <h5 class="mt-3">Motorista</h5>
+                    <div>
+                        <div class="user">
+                            <img class="icon" src="assets/pessoa.png" alt="" width="35px" height="35px" />
+                            <div class="info ml-3">
+                                <div class="fw-bold">
+                                    {{ carona?.motorista?.nomeCompleto }}
+                                </div>
+                                <div class="fw-bold">
+                                    {{ carona?.motorista?.motorista?.modeloVeiculo }}
+                                </div>
+                                <div class="fw-bold"><i class="bi bi-star-fill"></i> 5.0</div>
+                            </div>
+                        </div>
+                    </div>
+
                     <h5 class="mt-3">Passageiros</h5>
                     <div>
-    
-                        <div class="user">
-                            <img class="icon" src="assets/pessoa.png" alt="" width="35px" height="35px">
+                        <div class="user" *ngFor="let passageiro of carona?.passageiros">
+                            <img class="icon" src="assets/pessoa.png" alt="" width="35px" height="35px" />
                             <div class="info ml-3">
-                                <div class="fw-bold">José</div>
-                                <div class="fw-bold "> <i class="bi bi-star-fill"></i> 4.9</div>
+                                <div class="fw-bold">{{passageiro.nomeCompleto}}</div>
+                                <div class="fw-bold"><i class="bi bi-star-fill"></i> 5.0</div>
                             </div>
                         </div>
-    
-                        <div class="user">
-                            <img class="icon" src="assets/pessoa.png" alt="" width="35px" height="35px">
-                            <div class="info ml-3">
-                                <div class="fw-bold">Carlos</div>
-                                <div class="fw-bold "> <i class="bi bi-star-fill"></i> 5.0</div>
-                            </div>
+
+                        <div>
+                            <button class="btn btn-primary" (click)="reservar()" [disabled]="!reserva"><i class="bi bi-plus-lg"></i> Reservar vaga</button>
                         </div>
-    
                     </div>
                 </div>
                 <div class="col-sm-9 p-3">
                     <h5 class="mt-3">Rota</h5>
-                    <img style="width: 100%;" src="assets/map2.png" alt="">
+                    <img style="width: 100%" src="assets/map2.png" alt="" />
                 </div>
             </div>
         </div>

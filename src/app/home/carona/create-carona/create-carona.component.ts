@@ -1,11 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CaronaService } from 'src/app/services/carona.service';
 
 @Component({
   selector: 'app-create-carona',
   templateUrl: './create-carona.component.html',
-  styleUrls: ['./create-carona.component.css']
+  styleUrls: ['./create-carona.component.css'],
 })
 export class CreateCaronaComponent implements OnInit {
+  caronaForm = new FormGroup({
+    saida: new FormControl(''),
+    saidaHorario: new FormControl(''),
+    chegada: new FormControl(''),
+    chegadaHorario: new FormControl(''),
+    valor: new FormControl(''),
+  });
 
   fase: number = 1;
 
@@ -25,11 +35,17 @@ export class CreateCaronaComponent implements OnInit {
     'Unileste - Coronel Fabriciano',
   ];
 
-  valor:number = 7.9;
+  valor: number = 7.9;
 
-  constructor() { }
+  constructor(private caronaService: CaronaService, private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onSubmit() {
+    console.log(this.caronaForm.value);
+    this.caronaService.create(this.caronaForm.value).then(res => {
+      this.router.navigate(["/pesquisar-carona"])
+    });
+    
   }
-
 }

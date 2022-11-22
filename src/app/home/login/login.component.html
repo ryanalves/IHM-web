@@ -1,31 +1,56 @@
 <app-navbar></app-navbar>
 
-<div class="container p-4" id="tamanho">
+<form
+  class="container p-4"
+  id="tamanho"
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+>
+  <a class="voltar" routerLink="/caronas">
+    <i class="bi bi-chevron-left"></i>
+    <label> Voltar </label>
+  </a>
 
-    <a class="voltar" routerLink="/caronas">
-        <i class="bi bi-chevron-left"></i>
-        <label> Voltar </label>
-    </a>
+  <div class="d-flex w-100 justify-content-center">
+    <img
+      src="assets/van.png"
+      height="70"
+      class="d-inline-block align-text-top"
+      style="margin-bottom: 10px"
+    />
+  </div>
 
-    <div class="d-flex w-100 justify-content-center">
-        <img src="assets/van.png" height="70" class="d-inline-block align-text-top" style="margin-bottom: 10px">
-    </div>
-
-    <div class="form-group">
-        <label>Email</label>
-        <input type="text" name="usuario" class="form-control" placeholder="Usuário" autocomplete="off" required>
-    </div>
-    <div class="form-group">
-        <label>Senha</label>
-        <input type="password" name="senha" class="form-control" placeholder="Senha" autocomplete="off" required>
-    </div>
-    <div style="text-align: center">
-        <button type="submit" id="button-entrar" class="btn btn-primary">Entrar</button>
-        <p></p>
-        <a class="esquecer-senha" href="#">Esqueceu sua senha?</a>
-        <p></p>
-        <a class="cadastro" routerLink="/cadastro">Cadastrar-se</a>
-        <!-- <p></p> -->
-        <!-- <a class="contato" href="#">Não conseguiu se cadastrar? Entre em contato conosco!</a> -->
-    </div>
-</div>
+  <div class="form-group">
+    <label>Email</label>
+    <input
+      type="text"
+      name="usuario"
+      class="form-control"
+      placeholder="Email"
+      required
+      formControlName="email"
+    />
+  </div>
+  <div class="form-group">
+    <label>Senha</label>
+    <input
+      type="password"
+      name="senha"
+      class="form-control"
+      placeholder="Senha"
+      required
+      formControlName="senha"
+    />
+  </div>
+  <div style="text-align: center">
+    <button type="submit" id="button-entrar" class="btn btn-primary">
+      Entrar
+    </button>
+    <p></p>
+    <a class="esquecer-senha" href="#">Esqueceu sua senha?</a>
+    <p></p>
+    <a class="cadastro" routerLink="/cadastro">Cadastrar-se</a>
+    <!-- <p></p> -->
+    <!-- <a class="contato" href="#">Não conseguiu se cadastrar? Entre em contato conosco!</a> -->
+  </div>
+</form>

@@ -11,8 +11,10 @@ import { PesquisarCaronaComponent } from './carona/pesquisar-carona/pesquisar-ca
 import { LoginComponent } from './login/login.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewCaronaComponent } from './carona/view-carona/view-carona.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { DetalhesComponent } from './perfil/detalhes/detalhes.component';
 
 
 @NgModule({
@@ -26,13 +28,16 @@ import { ViewCaronaComponent } from './carona/view-carona/view-carona.component'
     LoginComponent,
     CadastroComponent,
     ViewCaronaComponent,
+    DetalhesComponent,
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     TypeaheadModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgxMaskModule.forChild()
   ],
-  bootstrap: [HomeComponent]
+  bootstrap: [HomeComponent],
 })
 export class HomeModule { }

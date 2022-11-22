@@ -1,4 +1,4 @@
-<div class="p-2" style="margin-left: 30px;">
+<div class="p-2" style="margin-left: 30px">
     <a class="voltar" routerLink="/caronas">
         <i class="bi bi-chevron-left"></i>
         <label> Voltar </label>
@@ -13,15 +13,13 @@
                     <span class="input-group-text" id="basic-addon1">
                         <i class="bi bi-geo-alt"></i>
                     </span>
-                    <input type="text" class="form-control no-round-right no-round-left" placeholder="Saindo de"
-                        value="Centro, Timóteo - MG">
+                    <input type="text" class="form-control no-round-right no-round-left" placeholder="Saindo de" [(ngModel)]="saida" [ngModelOptions]="{ standalone: true }" />
                 </div>
-                <div class="input-group mb-3" style="max-width: 145px;">
+                <div class="input-group mb-3" style="max-width: 145px">
                     <span class="input-group-text no-round-left" id="basic-addon1">
                         <i class="bi bi-person"></i>
                     </span>
-                    <input type="number" style="max-width: 100px;" class="form-control no-round-left" value="1" min="1"
-                        max="4">
+                    <input type="number" style="max-width: 100px" class="form-control no-round-left" value="1" min="1" max="4" />
                 </div>
             </div>
             <div class="d-flex" style="gap: 15px">
@@ -29,15 +27,11 @@
                     <span class="input-group-text no-round-left" id="basic-addon1">
                         <i class="bi bi-geo-alt-fill"></i>
                     </span>
-                    <input type="text" class="form-control no-round-right no-round-left" placeholder="Indo para"
-                        value="Unileste, Coronel Fabriciano - MG">
+                    <input type="text" class="form-control no-round-right no-round-left" placeholder="Indo para" [(ngModel)]="chegada" [ngModelOptions]="{ standalone: true }" />
                 </div>
-                <a class="btn btn-primary text-nowrap" style="height: 39px;" routerLink="/pesquisar-carona">
-                    Encontrar carona
-                </a>
+                <a class="btn btn-primary text-nowrap" style="height: 39px" (click)="pesquisar()"> Encontrar carona </a>
             </div>
         </form>
-
     </div>
 </div>
 
@@ -48,28 +42,43 @@
             <a>Limpar tudo</a>
         </div>
         <div>
-
             <label for="check-1" class="filtro-item mb-1">
                 <i class="bi bi-clock"></i>
                 <div class="descricao">Saída mais cedo</div>
-                <div class="form-check form-check-inline">
-                    <input type="checkbox" class="form-check-input reset-position" name="filtro" id="check-1">
+                <div class="form-check form-check-inline" (click)="mudarFiltro('saidaCedo')">
+                    <input type="radio" class="form-check-input reset-position" name="filtro" [checked]="filtro == 'saidaCedo'" />
                 </div>
             </label>
 
             <label for="check-2" class="filtro-item mb-1">
                 <i class="bi bi-clock"></i>
-                <div class="descricao">Preço mais baixo</div>
-                <div class="form-check form-check-inline">
-                    <input type="checkbox" class="form-check-input reset-position" name="filtro" id="check-2">
+                <div class="descricao">Saída mais tarde</div>
+                <div class="form-check form-check-inline" (click)="mudarFiltro('saidaTarde')">
+                    <input type="radio" class="form-check-input reset-position" name="filtro" [checked]="filtro == 'saidaTarde'" />
                 </div>
             </label>
 
             <label for="check-3" class="filtro-item mb-1">
+                <i class="bi bi-coin"></i>
+                <div class="descricao">Preço mais baixo</div>
+                <div class="form-check form-check-inline" (click)="mudarFiltro('precoBaixo')">
+                    <input type="radio" class="form-check-input reset-position" name="filtro" [checked]="filtro == 'precoBaixo'" />
+                </div>
+            </label>
+
+            <label for="check-4" class="filtro-item mb-1">
+                <i class="bi bi-coin"></i>
+                <div class="descricao">Preço mais alto</div>
+                <div class="form-check form-check-inline" (click)="mudarFiltro('precoAlto')">
+                    <input type="radio" class="form-check-input reset-position" name="filtro" [checked]="filtro == 'precoAlto'" />
+                </div>
+            </label>
+
+            <!-- <label for="check-3" class="filtro-item mb-1">
                 <i class="bi bi-clock"></i>
                 <div class="descricao">Perto do ponto de partida</div>
                 <div class="form-check form-check-inline">
-                    <input type="checkbox" class="form-check-input reset-position" name="filtro" id="check-3">
+                    <input type="checkbox" class="form-check-input reset-position" name="filtro" id="check-3" />
                 </div>
             </label>
 
@@ -77,7 +86,7 @@
                 <i class="bi bi-clock"></i>
                 <div class="descricao">Perto do ponto de chegada</div>
                 <div class="form-check form-check-inline">
-                    <input type="checkbox" class="form-check-input reset-position" name="filtro" id="check-4">
+                    <input type="checkbox" class="form-check-input reset-position" name="filtro" id="check-4" />
                 </div>
             </label>
 
@@ -85,40 +94,46 @@
                 <i class="bi bi-clock"></i>
                 <div class="descricao">Viagem mais curta</div>
                 <div class="form-check form-check-inline">
-                    <input type="checkbox" class="form-check-input reset-position" name="filtro" id="check-5">
+                    <input type="checkbox" class="form-check-input reset-position" name="filtro" id="check-5" />
                 </div>
-            </label>
-
+            </label> -->
         </div>
     </div>
     <div class="trips">
-        <div class="trip" routerLink="/view-carona">
+        <div class="trip" [routerLink]="'/view-carona/' + carona.id" *ngFor="let carona of caronas">
             <div class="linha mb-3">
                 <div class="locais">
                     <div class="partida">
-                        <div>18:30</div>
-                        <div> Centro, Timóteo</div>
+                        <div>
+                            <b>{{ converterData(carona.saidaHorario) }}</b>
+                        </div>
+                        <div>{{ carona.saida }}</div>
                     </div>
                     <div class="destino">
-                        <div>19:00</div>
-                        <div> Unileste, Coronel Fabriciano</div>
+                        <div>
+                            <b>{{ converterData(carona.chegadaHorario) }}</b>
+                        </div>
+                        <div>{{ carona.chegada }}</div>
                     </div>
                 </div>
-                <div>
-                    R$ 14,00
-                </div>
+                <div>{{ carona.valor | currency }}</div>
             </div>
             <div class="linha">
                 <div class="user">
-                    <img class="icon" src="assets/pessoa.png" alt="" width="35px" height="35px">
+                    <img class="icon" src="assets/pessoa.png" alt="" width="35px" height="35px" />
                     <div class="info ml-3">
-                        <div class="fw-bold">John Doe</div>
-                        <div class="fw-bold "> <i class="bi bi-star-fill"></i> 4.6</div>
+                        <div class="fw-bold">
+                            {{ carona.motorista?.nomeCompleto }}
+                        </div>
+                        <div class="fw-bold">
+                            {{ carona.motorista?.motorista?.modeloVeiculo }}
+                        </div>
+                        <div class="fw-bold"><i class="bi bi-star-fill"></i> 5.0</div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="trip" routerLink="/view-carona">
+        <!-- <div class="trip" routerLink="/view-carona">
             <div class="linha mb-3">
                 <div class="locais">
                     <div class="partida">
@@ -143,6 +158,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

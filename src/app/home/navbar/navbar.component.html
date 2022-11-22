@@ -8,15 +8,34 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/pesquisar-carona">Encontrar Carona</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/oferecer-carona">Oferecer Carona</a>
+                
+                <li class="nav-item"  style="opacity: 0.5;" *ngIf="!usuario?.cnh">
+                    <a class="nav-link">Oferecer Carona</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/login">Login</a>
+
+                <li class="nav-item" *ngIf="usuario?.cnh">
+                    <a class="nav-link"  routerLink="/oferecer-carona">Oferecer Carona</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" routerLink="/cadastro">Cadastro</a>
-                </li> -->
+
+                <li class="nav-item" *ngIf="!usuario">
+                    <a class="btn" routerLink="/login" aria-expanded="false">
+                        Login
+                    </a>
+                </li>
+                
+                <li class="nav-item" *ngIf="usuario">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ usuario?.nome }}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" routerLink="/perfil/caronas" href="#">Caronas</a></li>
+                            <li><a class="dropdown-item" routerLink="/perfil/detalhes" href="#">Perfil</a></li>
+                            <li><a class="dropdown-item" routerLink="#" (click)="logout()">Sair</a></li>
+                        </ul>
+                    </div>
+                </li>
+
             </ul>
         </div>
     </div>
