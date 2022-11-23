@@ -15,6 +15,7 @@ export class DetalhesComponent implements OnInit {
 
     detalhesForm = new FormGroup({
         email: new FormControl(''),
+        telefone: new FormControl(''),
         nomeCompleto: new FormControl(''),
         motorista: new FormGroup({
             cnh: new FormControl(''),
@@ -39,6 +40,7 @@ export class DetalhesComponent implements OnInit {
                 let usuario = res.usuario;
 
                 this.detalhesForm.get('email')?.setValue(usuario.email);
+                this.detalhesForm.get('telefone')?.setValue(usuario.telefone);
                 this.detalhesForm.get('nomeCompleto')?.setValue(usuario.nomeCompleto);
                 this.detalhesForm.get('senha')?.setValue(usuario.senha);
 

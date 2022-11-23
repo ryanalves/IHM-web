@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { CaronaService } from 'src/app/services/carona.service';
 import * as dayjs from 'dayjs';
+import { AuthService } from 'src/app/services/auth.service';
+import { CaronaService } from 'src/app/services/carona.service';
 
 @Component({
-    selector: 'app-pesquisar-carona',
-    templateUrl: './pesquisar-carona.component.html',
-    styleUrls: ['./pesquisar-carona.component.css'],
+    selector: 'app-reservas',
+    templateUrl: './reservas.component.html',
+    styleUrls: ['./reservas.component.css'],
 })
-export class PesquisarCaronaComponent implements OnInit {
-    constructor(private caronaService: CaronaService) {}
+export class ReservasComponent implements OnInit {
+    constructor(private authService: AuthService, private caronaService: CaronaService) {}
 
-    vagas: number = 1;
     saida: string = '';
     chegada: string = '';
     filtro: 'saidaCedo' | 'saidaTarde' | 'precoBaixo' | 'precoAlto' = 'saidaCedo';
 
-    caronas: any = [];
+    reservas: any = [];
 
     ngOnInit(): void {
         this.pesquisar();
@@ -28,11 +28,11 @@ export class PesquisarCaronaComponent implements OnInit {
                 saida: this.saida,
                 chegada: this.chegada,
                 filtro: this.filtro,
-                vagas: this.vagas,
+                reservas: this.authService.$usuario.value.email,
             })
             .then((res) => {
                 console.log(res);
-                this.caronas = res;
+                this.reservas = res;
             });
     }
 

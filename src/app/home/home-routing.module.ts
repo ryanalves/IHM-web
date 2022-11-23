@@ -7,7 +7,9 @@ import { PesquisarCaronaComponent } from './carona/pesquisar-carona/pesquisar-ca
 import { ViewCaronaComponent } from './carona/view-carona/view-carona.component';
 import { HomeComponent } from './home.component';
 import { LoginComponent } from './login/login.component';
+import { CaronasComponent } from './perfil/caronas/caronas.component';
 import { DetalhesComponent } from './perfil/detalhes/detalhes.component';
+import { ReservasComponent } from './perfil/reservas/reservas.component';
 
 const routes: Routes = [
     {
@@ -26,7 +28,8 @@ const routes: Routes = [
         component: HomeComponent,
         children: [
             { path: '', redirectTo: '/perfil/caronas', pathMatch: 'full' },
-            { path: 'caronas', component: DetalhesComponent },
+            { path: 'caronas', component: CaronasComponent },
+            { path: 'reservas', component: ReservasComponent },
             { path: 'detalhes', component: DetalhesComponent },
         ],
     },

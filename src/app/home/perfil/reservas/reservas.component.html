@@ -1,0 +1,103 @@
+<div class="p-2" style="margin-left: 30px">
+    <a class="voltar" routerLink="/">
+        <i class="bi bi-chevron-left"></i>
+        <label> Voltar </label>
+    </a>
+</div>
+
+<div class="d-flex p-2 justify-content-center">
+    <h2>Minhas Reservas</h2>
+</div>
+
+<div class="d-flex p-2 justify-content-center">
+    <div class="filter">
+        <div class="d-flex justify-content-between">
+            <h4>Ordenar por</h4>
+            <a>Limpar tudo</a>
+        </div>
+        <div>
+            <label for="check-1" class="filtro-item mb-1">
+                <i class="bi bi-clock"></i>
+                <div class="descricao">Saída mais cedo</div>
+                <div class="form-check form-check-inline" (click)="mudarFiltro('saidaCedo')">
+                    <input type="radio" class="form-check-input reset-position" name="filtro" [checked]="filtro == 'saidaCedo'" />
+                </div>
+            </label>
+
+            <label for="check-2" class="filtro-item mb-1">
+                <i class="bi bi-clock"></i>
+                <div class="descricao">Saída mais tarde</div>
+                <div class="form-check form-check-inline" (click)="mudarFiltro('saidaTarde')">
+                    <input type="radio" class="form-check-input reset-position" name="filtro" [checked]="filtro == 'saidaTarde'" />
+                </div>
+            </label>
+
+            <label for="check-3" class="filtro-item mb-1">
+                <i class="bi bi-coin"></i>
+                <div class="descricao">Preço mais baixo</div>
+                <div class="form-check form-check-inline" (click)="mudarFiltro('precoBaixo')">
+                    <input type="radio" class="form-check-input reset-position" name="filtro" [checked]="filtro == 'precoBaixo'" />
+                </div>
+            </label>
+
+            <label for="check-4" class="filtro-item mb-1">
+                <i class="bi bi-coin"></i>
+                <div class="descricao">Preço mais alto</div>
+                <div class="form-check form-check-inline" (click)="mudarFiltro('precoAlto')">
+                    <input type="radio" class="form-check-input reset-position" name="filtro" [checked]="filtro == 'precoAlto'" />
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="trips">
+        <div class="trip" [routerLink]="'/view-carona/' + reserva.id" *ngFor="let reserva of reservas">
+            <div class="linha mb-3">
+                <div class="locais">
+                    <div class="partida">
+                        <div>
+                            <b>{{ converterData(reserva.saidaHorario) }}</b>
+                        </div>
+                        <div>{{ reserva.saida }}</div>
+                    </div>
+                    <div class="destino">
+                        <div>
+                            <b>{{ converterData(reserva.chegadaHorario) }}</b>
+                        </div>
+                        <div>{{ reserva.chegada }}</div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div>{{ reserva.valor | currency }}</div>
+                    <div>{{ 4 - (reserva?.passageiros?.length ?? 0) }} vagas restantes</div>
+                </div>
+            </div>
+            <div class="linha" style="justify-content: start; gap: 20px">
+                <div class="user" style="width: fit-content">
+                    <img class="icon" src="assets/pessoa.png" alt="" width="35px" height="35px" />
+                    <div class="info ml-3">
+                        <div class="fw-bold">
+                            {{ reserva.motorista?.nomeCompleto }}
+                        </div>
+                        <div class="fw-bold">
+                            {{ reserva.motorista?.motorista?.modeloVeiculo }}
+                        </div>
+                        <div class="fw-bold"><i class="bi bi-star-fill"></i> 5.0</div>
+                    </div>
+                </div>
+
+                <div class="user mt-0">
+                    <div class="info">
+                        <div>
+                            <div class="fw-bold">Email:</div>
+                            {{ reserva?.motorista?.email }}
+                        </div>
+                        <div>
+                            <div class="fw-bold">Telefone:</div>
+                            {{ reserva?.motorista?.telefone | mask: '(00) 0000-0000||(00) 00000-0000' }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

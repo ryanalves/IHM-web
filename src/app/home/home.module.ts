@@ -15,6 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewCaronaComponent } from './carona/view-carona/view-carona.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { DetalhesComponent } from './perfil/detalhes/detalhes.component';
+import { CaronasComponent } from './perfil/caronas/caronas.component';
+import { ReservasComponent } from './perfil/reservas/reservas.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { DetalhesComponent } from './perfil/detalhes/detalhes.component';
     CadastroComponent,
     ViewCaronaComponent,
     DetalhesComponent,
+    CaronasComponent,
+    ReservasComponent,
   ],
   imports: [
     CommonModule,

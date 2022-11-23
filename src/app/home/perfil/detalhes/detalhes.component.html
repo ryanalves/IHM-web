@@ -37,14 +37,25 @@
   </div>
 
 
-  <div class="col-md-12 required">
+  <div class="col-md-8 required">
     <label for="inputNomeCompleto" class="form-label">Nome Completo</label>
     <input
-      type="name"
+      type="text"
       class="form-control"
       id="inputNomeCompleto"
       required
       formControlName="nomeCompleto"
+    />
+  </div>
+  <div class="col-md-4 required">
+    <label for="telefone" class="form-label">Telefone</label>
+    <input
+      type="text"
+      class="form-control"
+      id="telefone"
+      required
+      mask="(00) 0000-0000||(00) 00000-0000"
+      formControlName="telefone"
     />
   </div>
 
