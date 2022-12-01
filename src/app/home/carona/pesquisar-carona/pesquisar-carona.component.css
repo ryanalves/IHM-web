@@ -38,7 +38,10 @@
 .locais {
     display:flex;
     flex-direction: column;
+}
 
+.locais b {
+    white-space: nowrap;
 }
 
 .partida, .destino {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CaronaService } from 'src/app/services/carona.service';
 import * as dayjs from 'dayjs';
+import { Carona } from 'src/types/carona';
 
 @Component({
     selector: 'app-pesquisar-carona',
@@ -31,8 +32,11 @@ export class PesquisarCaronaComponent implements OnInit {
                 vagas: this.vagas,
             })
             .then((res) => {
-                console.log(res);
-                this.caronas = res;
+                if (res && Array.isArray(res)) {
+                    this.caronas = res.map(Carona.build);
+                }
+                console.log(this.caronas);
+                
             });
     }
 

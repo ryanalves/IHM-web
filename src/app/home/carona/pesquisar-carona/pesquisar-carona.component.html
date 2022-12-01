@@ -105,13 +105,13 @@
                 <div class="locais">
                     <div class="partida">
                         <div>
-                            <b>{{ converterData(carona.saidaHorario) }}</b>
+                            <b>{{ carona.parseSaidaHorario() }}</b>
                         </div>
                         <div>{{ carona.saida }}</div>
                     </div>
                     <div class="destino">
                         <div>
-                            <b>{{ converterData(carona.chegadaHorario) }}</b>
+                            <b>{{ carona.parseChegadaHorario() }}</b>
                         </div>
                         <div>{{ carona.chegada }}</div>
                     </div>
